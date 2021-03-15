@@ -1,0 +1,82 @@
+{% extends "bootstrap.html" %}
+
+{% block head %}
+<title>BMR</title>
+{% endblock %}
+
+{% block navbar_BMR %}
+<li class="nav-item">
+	<a class="nav-link" href="/produkty">Sprawdź kaloryczność produktów</a>
+</li>
+
+<li class="nav-item">
+	<a class="nav-link" href="/BMI">Oblicz swoje BMI</a>
+</li>
+
+<li class="nav-item">
+	<a class="nav-link" href="/">Powrót do strony głównej</a>
+</li>
+{% endblock %}
+
+{% block content %}
+<form action = "http://localhost:5000/BMR/" method = post>
+	<fieldset class="border p-2" style= "margin: 10px 20px 20px 20px";>
+		<legend  class="w-auto">Oblicz swoje zapotrzebowanie kaloryczne</legend>
+		{{ form.hidden_tag() }}
+		<div style = font-size:15px; font-weight:bold; margin-left:150px;>
+
+		{{ form.gender.label }} {{ form.gender }}
+
+		{{ form.weight.label }}<br>
+		{{ form.weight }}
+		<br>
+
+		{% for message in form.weight.errors %}
+		<div class="alert alert-danger" role="alert">
+		{{ message }}
+		</div>
+		{% endfor %}
+
+		{{ form.height.label }}<br>
+		{{ form.height }}
+		<br>
+
+		{% for message in form.height.errors %}
+		<div class="alert alert-danger" role="alert">
+		{{ message }}
+		</div>
+		{% endfor %}
+
+		{{ form.age.label }}<br>
+		{{ form.age }}
+		<br>
+
+		{% for message in form.age.errors %}
+		<div class="alert alert-danger" role="alert">
+		{{ message }}
+		</div>
+		{% endfor %}
+
+		{{ form.activity.label }} <br>
+		{{ form.activity }}
+		<br> <br>
+
+		<ul>
+		<li>Bardzo mała aktywność -  typowa praca biurowa (siedzenie, nauka, lekki spacer w ciągu dnia) </li>
+		<li>Mała aktywność - praca w której głównie chodzisz lub siedzisz (np. nauczyciel, pracownik sklepu) lub lekki spacer 30-50 minut 3-4 dni w tygodniu</li>
+		<li>Średnia aktywność - praca wymagająca lekkiej aktywności (np. sprzątanie), umiarkowane ćwiczenia 3-5 dni w tygodniu po 30-60 minut</li>
+		<li>Duża aktywność - ciężka praca fizyczna, intensywne ćwiczenia 6-7 dni w tygodniu po 45-60 minut</li>
+		<li>Bardzo duża aktywność - bardzo intensywna praca fizyczna (min. 8 godzin dziennie), bardzo intesnywne ćwiczenia 6-7 dni w tygodniu po co najmniej 90 minut</li>
+		</ul>
+
+		{{ form.deficit.label }}<br>
+		{{ form.deficit }}
+		<br>
+		<br> <br>
+
+		<button type="submit" class="btn btn-primary">Zatwierdź</button>
+
+		</div>
+	</fieldset>
+</form>
+{% endblock %}

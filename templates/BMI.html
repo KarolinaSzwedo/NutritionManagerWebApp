@@ -1,0 +1,56 @@
+{% extends "bootstrap.html" %}
+
+{% block head %}
+ <title>BMI</title>
+{% endblock %}
+
+{% block navbar_BMI %}
+<li class="nav-item">
+  <a class="nav-link" href="/BMR">Oblicz swoje BMR</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/produkty">Sprawdź kaloryczność produktów</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/">Powrót do strony głównej
+</a>
+</li>
+{% endblock %}
+
+{% block content %}
+<form action = "http://localhost:5000/BMI/" method = post>
+  <fieldset class="border p-2" style= "margin: 10px 20px 20px 20px";>
+    <legend  class="w-auto">Oblicz swoje BMI</legend>
+    {{ form.hidden_tag() }}
+    <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+
+    {{ form.weight_BMI.label }}<br>
+    {{ form.weight_BMI }}
+    <br>
+
+    {% for message in form.weight_BMI.errors %}
+    <div class="alert alert-danger" role="alert">
+    {{ message }}
+    </div>
+    {% endfor %}
+
+    {{ form.height_BMI.label }}<br>
+    {{ form.height_BMI }}
+    <br>
+
+    {% for message in form.height_BMI.errors %}
+    <div class="alert alert-danger" role="alert">
+    {{ message }}
+    </div>
+    {% endfor %}
+    <br>
+
+    <button type="submit" class="btn btn-primary">Zatwierdź</button>
+    </div>
+
+  </fieldset>
+</form>
+
+{% block result_BMI %}	 {% endblock %}
+
+{% endblock %}

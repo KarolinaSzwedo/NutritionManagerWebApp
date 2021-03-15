@@ -1,0 +1,55 @@
+{% extends "bootstrap.html" %}
+
+{% block head %}
+<title>Wynik BMR</title>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+{% endblock %}
+
+{% block navbar_resultBMR %}
+<li class="nav-item">
+	<a class="nav-link" href="/produkty">Sprawdź kaloryczność produktów</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link" href="/BMI">Oblicz swoje BMI</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link" href="/BMR">Powrót do kalkulatora BMR</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link" href="/">Powrót do strony głównej</a>
+</li>
+{% endblock %}
+
+{% block content %}
+<!-- Wykres -->
+<center>
+	<h4 class = "font-weight-bold" style= "margin: 20px 0px 20px 0px">Procentowy rozkład makroelementów</h4>
+    <canvas id="chart" width="600" height="400"></canvas>
+	<script>
+	 var pieData = [
+        {% for value, label, colors in set %}
+          {
+            value: {{value}},
+            label: "{{label}}",
+            color : "{{colors}}"
+          },
+        {% endfor %}
+      ];
+
+      var mychart = document.getElementById("chart").getContext("2d");
+      steps = 10
+      new Chart(document.getElementById("chart").getContext("2d")).Pie(pieData);
+    </script>
+</center>
+
+<!-- Dane z formularza -->
+<br>
+<div>
+    <ul class = "font-weight-bold text-center">
+	    Twoje zapotrzebowanie kaloryczne: {{result}} kcal <br>
+	    Twoje zapotrzebowanie na białko: {{protein}} g <br>
+			Twoje zapotrzebowanie na tłuszcze: {{fat}} g <br>
+			Twoje zapotrzebowanie na węglowodany: {{carbs}} g <br>
+    </ul>
+</div>
+{% endblock %} 

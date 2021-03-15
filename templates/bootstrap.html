@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<link rel="stylesheet" media="screen" href="/static/bootstrap/css/bootstrap.min.css">
+<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% block head %}{% endblock %}
+
+<!-- Nawigacja -->
+<nav class="navbar navbar-dark navbar-fixed-bottom bg-info">
+	<div class="container">
+		<a class="navbar-brand navbar-left" >Menu</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<!-- Grupowanie elementów menu w celu lepszego wyświetlania na urządzeniach moblinych -->
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav">
+			{% block navbar_index %} {% endblock %}
+			{% block navbar_BMR %} {% endblock %}
+			{% block navbar_products %} {% endblock %}
+			{% block navbar_resultProd1 %} {% endblock %}
+			{% block navbar_resultBMR %} {% endblock %}
+			{% block navbar_BMI %} {% endblock %}
+			{% block navbar_resultProd2 %} {% endblock %}
+			</ul>
+		</div>
+	</div>
+</nav>
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+	    <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+
+	   	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% endblock %}
+
+{% block footer %}
+<footer>
+	<center>
+		<p class="copyright text-muted">Copyright © Karolina Szwedo 2021</p>
+	</center>
+</footer>
+{% endblock %}
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/static/jquery/jquery.slim.min.js"></script>
+  <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</html>

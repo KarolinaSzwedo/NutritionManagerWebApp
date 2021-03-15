@@ -1,0 +1,58 @@
+{% extends "BMI.html" %}
+
+{% block result_BMI %}
+<center>
+	<ul class = "font-weight-bold">
+		Twoje BMI wynosi: {{result_BMI}}
+	</ul>
+
+	{% if result_BMI < 16 %}
+		<div class="alert alert-danger" role="alert">
+			Oznacza to wygłodzenie
+			<br> Prawidłowa waga dla wzrostu {{height_BMI}} cm wynosi od {{min_weight}} kg do {{max_weight}} kg
+		</div>
+
+	{% elif  16 < result_BMI <= 16.99 %}
+		<div class="alert alert-danger" role="alert">
+			Oznacza to wychudzenie
+			<br> Prawidłowa waga dla wzrostu {{height_BMI}} cm wynosi od {{min_weight}} kg do {{max_weight}} kg
+		</div>
+
+	{% elif  17 <= result_BMI <= 18.49 %}
+		<div class="alert alert-warning" role="alert">
+			Oznacza to niedowagę
+			<br> Prawidłowa waga dla wzrostu {{height_BMI}} cm wynosi od {{min_weight}} kg do {{max_weight}} kg
+		</div>
+
+	{% elif  18.5 <= result_BMI <= 24.99 %}
+		<div class="alert alert-success" role="alert">
+			Oznacza to prawidłową wagę
+		</div>
+
+	{% elif  25 <= result_BMI <= 29.99 %}
+		<div class="alert alert-warning" role="alert">
+			Oznacza to nadwagę
+			<br> Prawidłowa waga dla wzrostu {{height_BMI}} cm wynosi od {{min_weight}} kg do {{max_weight}} kg
+		</div>
+
+	{% elif  30 <= result_BMI <= 34.99 %}
+		<div class="alert alert-danger" role="alert">
+			Oznacza to I stopień otyłości
+			<br> Prawidłowa waga dla wzrostu {{height_BMI}} cm wynosi od {{min_weight}} kg do {{max_weight}} kg
+		</div>
+
+	{% elif  35 <= result_BMI <= 39.99 %}
+		<div class="alert alert-danger" role="alert">
+			Oznacza to II stopień otyłości
+			<br> Prawidłowa waga dla wzrostu {{height_BMI}} cm wynosi od {{min_weight}} kg do {{max_weight}} kg
+		</div>
+
+	{% elif  result_BMI > 40 %}
+		<div class="alert alert-danger" role="alert">
+			Oznacza to skrajną otyłość
+			<br> Prawidłowa waga dla wzrostu {{height_BMI}} cm wynosi od {{min_weight}} kg do {{max_weight}} kg
+		</div>
+
+	{% endif %}
+</center>
+{% endblock %}

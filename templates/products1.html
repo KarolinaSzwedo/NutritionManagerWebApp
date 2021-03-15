@@ -1,0 +1,49 @@
+{% extends "bootstrap.html" %}
+
+{% block head %}
+<title>Produkty</title>
+{% endblock %}
+
+{% block navbar_products %}
+<li class="nav-item">
+	<a class="nav-link" href="/BMR">Oblicz swoje BMR</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link" href="/BMI">Oblicz swoje BMI</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link" href="/">Powrót do strony głównej</a>
+</li>
+{% endblock %}
+
+{% block content %}
+<br>
+{% block products3 %} {% endblock %}
+ <form action = "http://localhost:5000/produkty/" method = post>
+	<fieldset class="border p-2" style= "margin: 10px 20px 20px 20px";>
+		<legend  class="w-auto">Sprawdź kaloryczność produktów</legend>
+			{{ form.hidden_tag() }}
+
+			<div style = font-size:20px; font-weight:bold; margin-left:150px;>
+
+				{{ form.food.label }}<br>
+				{{ form.food }}
+				<br> <br>
+
+				{{ form.grams.label }}<br>
+				{{ form.grams }}
+				<br> <br>
+
+				{% for message in form.grams.errors %}
+				<div class="alert alert-danger" role="alert">
+				{{ message }}
+				</div>
+				{% endfor %}
+
+				<button type="submit" class="btn btn-primary" name="submit_button" value="Zatwierdz">Sprawdź pojedynczy produkt</button>
+				<button type="submit" class="btn btn-primary" name="submit_button" value="Dodaj">Dodaj produkt do listy</button>
+				<button type="submit" class="btn btn-primary" name="submit_button" value="Oblicz">Podsumuj produkty z listy</button>
+			</div>
+	</fieldset>
+</form>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "bootstrap.html" %}
+
+{% block head %}
+<head>
+<style>
+div {
+	background-position: center center;
+	background-repeat: no-no-repeat;
+	background-size: cover;
+}
+
+.circle-icon {
+    background: #3893ba;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    vertical-align: middle;
+    padding: 10px;
+}
+</style>
+</head>
+
+<title>Menedżer żywieniowy</title>
+
+<div class="view" style="background-image:  url('static/img/bg10.jpg')">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 mb-4 white-text text-center">
+			<h1 class="text-uppercase font-weight-bold mb-0 pt-md-5 pt-5"> <p style="color :white"> <strong>Menedżer żywieniowy</strong> </p></h1>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block navbar_index %}
+<li class="nav-item">
+	<a class="nav-link" href="/produkty">Sprawdź kaloryczność produktów</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link" href="/BMR">Oblicz swoje BMR</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link" href="/BMI">Oblicz swoje BMI</a>
+</li>
+{% endblock %}
+
+{% block content %}
+<div class="col-lg-8 mx-auto">
+<br> <br> <br>
+	<h2>O aplikacji</h2>
+	<hr class="hr-light my-4">
+	<p class="lead">W tej aplikacji możesz:</p>
+	<ul>
+		<li>obliczyć swoje zapotrzebowanie kaloryczne (BMR - Basal Metabolic Rate)</li>
+		<li>obliczyć swoje BMI (Body Mass Index)</li>
+		<li>sprawdzić kaloryczność wybranych produktów</li>
+	</ul>
+</div>
+<br><br> <br> <br>
+
+<footer>
+<!--  icons  -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-md-10 mx-auto">
+			<ul class="list-inline text-center">
+				<li class="list-inline-item">
+					<a href="https://github.com/KarolinaSzwedo" class="icon-block">
+						<i class="fa fa-github circle-icon" style="font-size:40px;color:white"></i>
+					</a>
+				</li>
+
+				<li class="list-inline-item">
+					<a href="mailto:karolina.szwedo14@gmail.com">
+						<i class="fa fa-envelope circle-icon" style="font-size:30px;color:white"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</footer>
+
+{% endblock %}
